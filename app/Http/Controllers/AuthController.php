@@ -38,8 +38,7 @@ class AuthController extends Controller
         }
         else {
             return response()->json([
-                'pesan' => 'login gagal',
-                'data' => $user
+                'pesan' => 'login gagal'
             ]);
         }
 
