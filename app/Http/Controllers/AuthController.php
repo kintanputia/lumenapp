@@ -28,10 +28,10 @@ class AuthController extends Controller
         //     return response()->json(['message' => 'Password Salah'], 401);
         // }
 
-        // $generateToken = bin2hex(random_bytes(40));
-        // $user->update([
-        //     'token' => $generateToken
-        // ]);
+        $generateToken = bin2hex(random_bytes(40));
+        $user->update([
+            'token' => $generateToken
+        ]);
 
         return response()->json($user);
     }
