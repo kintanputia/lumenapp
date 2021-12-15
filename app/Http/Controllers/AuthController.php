@@ -27,12 +27,12 @@ class AuthController extends Controller
         if($user->password === $password){
             $token = Str::random(40);
 
-            // $user->update([
-            //     'token' => $token
-            // ]);
+            $user->update([
+                'api_token' => $token
+            ]);
 
             return response()->json([
-                'token' => $token,
+                'api_token' => $token,
                 'data' => $user
             ]);
         }
