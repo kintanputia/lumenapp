@@ -33,7 +33,7 @@ class AuthController extends Controller
             'token' => $generateToken
         ]);
 
-        return response()->json($user);
+        return response()->json($generateToken);
     }
 
     public function logout(Request $request){
