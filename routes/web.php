@@ -22,11 +22,6 @@ $router->get('/data', function () use ($router) {
     return response()->json($results);
 });
 
-$router->get('/user', function () use ($router) {
-    $results = app('db')->select("SELECT * FROM users");
-    return response()->json($results);
-});
-
 $router->post('/register', 'UserController@register');
 $router->post('/login','AuthController@login');
 
