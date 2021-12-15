@@ -23,17 +23,17 @@ class AuthController extends Controller
             return response()->json(['message' => 'Email Salah'], 401);
         }
 
-        // $isValidPassword = User::where('password', $user->password);
-        // if (!$isValidPassword) {
-        //     return response()->json(['message' => 'Password Salah'], 401);
-        // }
+        $isValidPassword = Hash::check($password, $user->password);
+        if(!$isValidPassword) {
+            return response()->json(['message' => 'Gagal Masuk'],401);
+        }
 
         $generateToken = bin2hex(random_bytes(40));
         $user->update([
             'token' => $generateToken
         ]);
 
-        return response()->json($generateToken);
+        return response()->json($user);
     }
 
     public function logout(Request $request){
