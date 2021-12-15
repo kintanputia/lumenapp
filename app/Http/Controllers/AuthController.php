@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -23,17 +24,20 @@ class AuthController extends Controller
             return response()->json(['message' => 'Email Salah'], 401);
         }
 
-        $isValidPassword = Hash::check($password, $user->password);
-        if(!$isValidPassword) {
-            return response()->json(['message' => 'Gagal Masuk'],401);
+        if($user->password === $password){
+            $token = Str::random(40);
+
+            $user->update([
+                'token' => $token
+            ]);
+
+            return response()->json([
+                'token' => $token,
+                'data' => $user
+            ]);
+
         }
 
-        $generateToken = bin2hex(random_bytes(40));
-        $user->update([
-            'token' => $generateToken
-        ]);
-
-        return response()->json($user);
     }
 
     public function logout(Request $request){
