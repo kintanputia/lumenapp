@@ -27,7 +27,9 @@ class AuthController extends Controller
         if($user->password === $password){
             $token = Str::random(40);
 
-            $update = app('db')->select("UPDATE users SET token = $token WHERE email = $email");
+            $user->update([
+                'token' => $token
+            ]);
 
             return response()->json([
                 'token' => $token,
