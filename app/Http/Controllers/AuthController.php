@@ -18,14 +18,14 @@ class AuthController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
 
-        $user = User::where('email', $email)->first();
+        $user = DB::table('users')->where('email', $email)->first();
         if (!$user) {
-            return response()->json(['message' => 'Login failed'], 401);
+            return response()->json(['message' => 'Email Salah'], 401);
         }
 
         $isValidPassword = Hash::check($password, $user->password);
         if (!$isValidPassword) {
-            return response()->json(['message' => 'Login failed'], 401);
+            return response()->json(['message' => 'Password Salah'], 401);
         }
 
         $generateToken = bin2hex(random_bytes(40));
