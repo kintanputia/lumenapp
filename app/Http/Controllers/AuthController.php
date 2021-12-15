@@ -18,7 +18,7 @@ class AuthController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
 
-        $user = DB::table('users')->where('email', $email)->first();
+        $user = User::where('email', $email)->first();
         if (!$user) {
             return response()->json(['message' => 'Email Salah'], 401);
         }
