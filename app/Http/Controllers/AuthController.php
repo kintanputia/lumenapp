@@ -28,14 +28,19 @@ class AuthController extends Controller
             $token = Str::random(40);
 
             $user->update([
-                $user->token => $token
+                'token' => $token
             ]);
 
             return response()->json([
                 'token' => $token,
                 'data' => $user
             ]);
-
+        }
+        else {
+            return response()->json([
+                'pesan' => 'login gagal',
+                'data' => $user
+            ]);
         }
 
     }
