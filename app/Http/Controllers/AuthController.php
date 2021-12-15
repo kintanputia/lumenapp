@@ -23,7 +23,7 @@ class AuthController extends Controller
             return response()->json(['message' => 'Email Salah'], 401);
         }
 
-        $isValidPassword = Hash::check($password, $user->password);
+        $isValidPassword = User::where('password', $user->password);
         if (!$isValidPassword) {
             return response()->json(['message' => 'Password Salah'], 401);
         }
