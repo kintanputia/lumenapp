@@ -36,8 +36,6 @@ class AuthController extends Controller
 
             $error=false; 
 
-            $response->write(json_encode($response_data));
-
             return response()->json([
                 'error' => $error,
                 'api_token' => $token,
