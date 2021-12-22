@@ -21,7 +21,10 @@ class AuthController extends Controller
 
         $user = User::where('email', $email)->first();
         if (!$user) {
-            return response()->json(['message' => 'Email Salah'], 401);
+            $error=true; 
+            return response()->json([
+                'error' => $error,
+                'message' => 'Email Salah'], 401);
         }
 
         if($user->password === $password){
@@ -31,13 +34,20 @@ class AuthController extends Controller
                 'api_token' => $token
             ]);
 
+            $error=false; 
+
+            $response->write(json_encode($response_data));
+
             return response()->json([
+                'error' => $error,
                 'api_token' => $token,
                 'data' => $user
             ]);
         }
         else {
+            $error=true; 
             return response()->json([
+                'error' => $error,
                 'pesan' => 'login gagal'
             ]);
         }
