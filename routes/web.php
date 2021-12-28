@@ -22,10 +22,10 @@ $router->get('/data', function () use ($router) {
     return response()->json($results);
 });
 
-// $router->get('/profil', function () use ($router) {
-//     $results = app('db')->select("SELECT * FROM users");
-//     return response()->json($results);
-// });
+$router->get('/profil', function () use ($router) {
+    $results = app('db')->select("SELECT * FROM users WHERE id_user = 2");
+    return response()->json($results);
+});
 
 // $router->get('/profil/detail', function () use ($router) {
 //     $results = app('db')->select("SELECT * FROM users");
@@ -35,8 +35,8 @@ $router->get('/data', function () use ($router) {
 $router->post('api/register', 'UserController@register');
 $router->post('api/login','AuthController@login');
 
-$router->get('/profil','UserController@getUser');
-$router->post('/profil/detail','UserController@getUser');
+// $router->get('/profil','UserController@getUser');
+// $router->post('/profil/detail','UserController@getUser');
 
 $router->group(['middleware' => 'auth'], function() use ($router){
     $router->post('/logout', 'AuthController@logout');
