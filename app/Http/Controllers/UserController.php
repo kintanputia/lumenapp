@@ -23,4 +23,13 @@ class UserController extends Controller
 
         return response()->json(['message' => 'Pendaftaran pengguna berhasil dilaksanakan']);
     }
+
+    public function getUser(){
+        
+        $user = User::where('id_user', '=', Auth::user()->id)->first();
+        return response()->json([
+            'data' => $user
+        ]);
+    }
+
 }
