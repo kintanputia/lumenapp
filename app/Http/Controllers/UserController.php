@@ -5,24 +5,63 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
     public function register(Request $request){
-        $this->validate($request, [
-            'email' => 'required|unique:users|email',
+        //nama, email, password
+        $validasi = Validator::make($request->all(), [
+            'nama' => 'required',
+            'email' => 'required|unique:users',
+            'no_hp' => 'required|unique:users',
             'password' => 'required|min:6'
         ]);
-        $email = $request->input('email');
-        $password = Hash::make($request->input('password'));
 
-        $user = User::create([
-            'email' => $email,
-            'password' => $password
-        ]);
+        if($validasi->fails()){
+            $val = $validasi->errors()->all();
+            return $this->error($val[0]);
+        }
 
-        return response()->json(['message' => 'Pendaftaran pengguna berhasil dilaksanakan']);
+        $user = User::create(array_merge($request->all(), [
+            'password' => bcrypt($request->password)
+        ]));
+
+        if($user){
+            return response()->json([
+                'success' => 1,
+                'message' => 'Selamat datang Register Berhasil',
+                'user' => $user
+            ]);
+        }
+
+        return $this->error('Registrasi gagal');
+
     }
+
+    public function error($pasan){
+        return response()->json([
+            'success' => 0,
+            'message' => $pasan
+        ]);
+    }
+
+    // public function register(Request $request){
+    //     $this->validate($request, [
+    //         'email' => 'required|unique:users|email',
+    //         'password' => 'required|min:6'
+    //     ]);
+    //     $email = $request->input('email');
+    //     $password = Hash::make($request->input('password'));
+
+    //     $user = User::create([
+    //         'email' => $email,
+    //         'password' => $password
+    //     ]);
+
+    //     return response()->json(['message' => 'Pendaftaran pengguna berhasil dilaksanakan']);
+    // }
 
     public function getUser(){
         

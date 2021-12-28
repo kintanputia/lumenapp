@@ -32,8 +32,8 @@ $router->get('/profil', function () use ($router) {
 //     return response()->json($results);
 // });
 
-$router->post('api/register', 'UserController@register');
-$router->post('api/login','AuthController@login');
+$router->post('register', 'UserController@register');
+$router->post('login','AuthController@login');
 
 // $router->get('/profil','UserController@getUser');
 // $router->post('/profil/detail','UserController@getUser');
