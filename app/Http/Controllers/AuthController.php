@@ -24,7 +24,11 @@ class AuthController extends Controller
                 ]);
             }
             else{
-                return $this->error('Password Salah');
+                // return $this->error('Password Salah');
+                return response()->json([
+                    'p' => $request->password,
+                    'p1' => $user->password
+                ]);
             }
         }
         else{
