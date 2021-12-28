@@ -23,9 +23,13 @@ class AuthController extends Controller
                     'user' => $user
                 ]);
             }
-            return $this->error('Password Salah');
+            else{
+                return $this->error('Password Salah');
+            }
         }
-        return $this->error('Email tidak terdaftar');
+        else{
+            return $this->error('Email tidak terdaftar');
+        }
     }
     
     public function error($pasan){
