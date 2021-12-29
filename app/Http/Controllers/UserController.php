@@ -26,7 +26,7 @@ class UserController extends Controller
 
         // $user = User::create($request->all());
 
-        $n = User::get('id');
+        $n = User::get(['id']);
         $id = max($n);
 
         $user = User::create([
