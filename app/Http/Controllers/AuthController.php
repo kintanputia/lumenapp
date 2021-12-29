@@ -42,6 +42,14 @@ class AuthController extends Controller
         return $this->error("Perubahan Gagal");
     }
     
+    public function success($data, $message = "success") {
+        return response()->json([
+            'code' => 200,
+            'message' => $message,
+            'data' => $data
+        ]);
+    }
+    
     public function error($pasan){
         return response()->json([
             'success' => 0,
