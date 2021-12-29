@@ -34,7 +34,7 @@ $router->get('/profil', function () use ($router) {
 
 $router->post('register', 'UserController@register');
 $router->post('login','AuthController@login');
-$router->put('update-user/{id_user}','AuthController@update');
+$router->put('update-user/{id}','AuthController@update');
 
 // $router->get('/profil','UserController@getUser');
 // $router->post('/profil/detail','UserController@getUser');

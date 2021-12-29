@@ -32,8 +32,8 @@ class AuthController extends Controller
         }
     }
 
-    public function update(Request $request, $id_user){
-        $user = User::where('id_user', $id_user)->first();
+    public function update(Request $request, $id){
+        $user = User::where('id', $id)->first();
         if($user){
             $user->update($request->all());
             return $this->success($user);
