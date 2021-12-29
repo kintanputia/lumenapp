@@ -31,6 +31,16 @@ class AuthController extends Controller
             return $this->error('Email tidak terdaftar');
         }
     }
+
+    public function update(Request $request, $id){
+        $user = User::where('id', $id)->first();
+        if($user){
+            $user->update($request->all());
+            return $this->success($user);
+        }
+
+        return $this->error("Perubahan Gagal");
+    }
     
     public function error($pasan){
         return response()->json([
