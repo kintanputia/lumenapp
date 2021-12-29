@@ -24,9 +24,7 @@ class UserController extends Controller
             return $this->error($val[0]);
         }
 
-        $user = User::create(array_merge($request->all(), [
-            'password' => bcrypt($request->password)
-        ]));
+        $user = User::create($request->all());
 
         if($user){
             return response()->json([
