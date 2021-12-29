@@ -22,6 +22,11 @@ $router->get('/data', function () use ($router) {
     return response()->json($results);
 });
 
+$router->get('/pengajian', function () use ($router) {
+    $results = app('db')->select("SELECT * FROM pengajian");
+    return response()->json($results);
+});
+
 $router->get('/profil', function () use ($router) {
     $results = app('db')->select("SELECT * FROM users");
     return response()->json($results);
