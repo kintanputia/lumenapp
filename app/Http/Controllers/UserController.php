@@ -24,7 +24,7 @@ class UserController extends Controller
             return $this->error($val[0]);
         }
 
-        $user = User::create($request->all());
+        // $user = User::create($request->all());
 
         $user = User::create([
                     'email' => $request->email,
