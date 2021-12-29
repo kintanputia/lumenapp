@@ -16,7 +16,7 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if($user){
-            if($request->password === $user->password){
+            if($request->password == $user->password){
                 return response()->json([
                     'success' => 1,
                     'message' => 'Selamat datang '.$user->name,
@@ -24,11 +24,7 @@ class AuthController extends Controller
                 ]);
             }
             else{
-                // return $this->error('Password Salah');
-                return response()->json([
-                    'p' => $request->password,
-                    'p1' => $user->password
-                ]);
+                return $this->error('Password Salah');
             }
         }
         else{
