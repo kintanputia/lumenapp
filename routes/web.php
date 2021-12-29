@@ -23,7 +23,7 @@ $router->get('/data', function () use ($router) {
 });
 
 $router->get('/profil', function () use ($router) {
-    $results = app('db')->select("SELECT * FROM users WHERE id_user = 2");
+    $results = app('db')->select("SELECT * FROM users");
     return response()->json($results);
 });
 

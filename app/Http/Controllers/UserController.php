@@ -26,6 +26,13 @@ class UserController extends Controller
 
         $user = User::create($request->all());
 
+        $user = User::create([
+                    'email' => $request->email,
+                    'password' => $request->password,
+                    'nama' => $request->nama,
+                    'no_hp' => $request->no_hp
+                ]);
+
         if($user){
             return response()->json([
                 'success' => 1,
