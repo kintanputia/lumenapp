@@ -15,7 +15,7 @@ class PengajianController extends Controller
                     ->where('nama_masjid', 'ILIKE', "%{$keyword}%")
                     ->get();
                 return response()->json([
-                    'data' => $pengajian
+                    $pengajian
                 ]);
     }
 }
