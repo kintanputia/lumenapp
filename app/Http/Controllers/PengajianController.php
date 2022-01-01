@@ -14,8 +14,6 @@ class PengajianController extends Controller
                     ->join('masjid', 'masjid.id_masjid', '=', 'pengajian.id_masjid')
                     ->where('nama_masjid', 'ILIKE', "%{$keyword}%")
                     ->get();
-                return response()->json([
-                    $pengajian
-                ]);
+                return response($pengajian);
     }
 }
