@@ -20,7 +20,7 @@ class PengajianController extends Controller
     {
         $keyword = $request->id_masjid;
         $pengajian = DB::table('pengajian')
-                    ->where('id', $keyword)
+                    ->where('id_masjid', $keyword)
                     ->get();
                 return response($pengajian);
     }
