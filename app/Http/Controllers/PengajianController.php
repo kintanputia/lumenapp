@@ -16,4 +16,12 @@ class PengajianController extends Controller
                     ->get();
                 return response($pengajian);
     }
+    public function detail(Request $request)
+    {
+        $keyword = $request->id_masjid;
+        $pengajian = DB::table('pengajian')
+                    ->where('id', $keyword)
+                    ->get();
+                return response($pengajian);
+    }
 }
