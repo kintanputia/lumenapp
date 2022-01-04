@@ -17,10 +17,8 @@ $router->get('/', function () use ($router) {
     return ["Hello Hai..!!!"];
 });
 
-$router->get('/data', function () use ($router) {
-    $results = app('db')->select("SELECT * FROM masjid");
-    return response()->json($results);
-});
+$router->post('cari_pengajian', 'PengajianController@index');
+$router->post('daftar_pengajian', 'PengajianController@detail');
 
 $router->get('/pengajian', function () use ($router) {
     $results = app('db')->select("SELECT * FROM pengajian INNER JOIN masjid ON pengajian.id_masjid=masjid.id_masjid");
