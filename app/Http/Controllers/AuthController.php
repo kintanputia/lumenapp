@@ -35,7 +35,10 @@ class AuthController extends Controller
     public function user(Request $request, $id){
         $user = User::where('id', $id)->first();
         if($user){
-            return $this->success($user);
+            return response()->json([
+                'success' => 1,
+                'user' => $user
+            ]);
         }
 
         return $this->error("Gagal Menampilkan");
