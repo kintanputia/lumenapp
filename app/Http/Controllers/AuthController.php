@@ -32,6 +32,16 @@ class AuthController extends Controller
         }
     }
 
+    public function user(Request $request, $id){
+        $user = User::where('id', $id)->first();
+        if($user){
+            return $this->success($user);
+        }
+
+        return $this->error("Gagal Menampilkan");
+    }
+    
+
     public function update(Request $request, $id){
         $user = User::where('id', $id)->first();
         if($user){
