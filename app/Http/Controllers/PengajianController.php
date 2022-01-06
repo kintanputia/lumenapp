@@ -27,19 +27,18 @@ class PengajianController extends Controller
     public function add_pf(Request $request)
     {
         $id_users = $request->id_user;
-        $i = DB::table('pengajian_favorit')->where('id_user', $id_users)->orderBy('id_pf', 'desc')->first();
-        // $id_pengajian = $request->id_pengajian;
-        
+        $id_pengajian = $request->id_pengajian;
+        $i = DB::table('pengajian_favorit')->max('id_pf');
 
-        // $pf = DB::table('pengajian_favorit')->insert([
-        //     'id_pf'=>$i+1,
-        //     'id_pengajian'=>$id_pengajian,
-        //     'id_user'=>$id_users
-        // ]);
+        $pf = DB::table('pengajian_favorit')->insert([
+            'id_pf'=>$i+1,
+            'id_pengajian'=>$id_pengajian,
+            'id_user'=>$id_users
+        ]);
 
-        // $respon = DB::table('pengajian_favorit')
-        //             ->where('id_user', $id_users)
-        //             ->get();
+        $respon = DB::table('pengajian_favorit')
+                    ->where('id_user', $id_users)
+                    ->get();
                 return response($i);
     }
 }
