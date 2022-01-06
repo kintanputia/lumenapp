@@ -31,7 +31,7 @@ class PengajianController extends Controller
         $id_user = $request->id_user;
 
         $pf = DB::table('pengajian_favorit')->insert([
-            'id_pf'=>2,
+            'id_pf'=>$i+1,
             'id_pengajian'=>$id_pengajian,
             'id_user'=>$id_user
         ]);
