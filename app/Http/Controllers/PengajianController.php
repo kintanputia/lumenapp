@@ -36,5 +36,10 @@ class PengajianController extends Controller
             'id_pengajian'=>$id_pengajian,
             'id_user'=>$id_user
         ]);
+
+        $pf = DB::table('pengajian_favorit')
+                    ->where('id_user', $id_user)
+                    ->get();
+                return response($pf);
     }
 }
