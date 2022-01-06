@@ -54,6 +54,17 @@ class AuthController extends Controller
 
         return $this->error("Perubahan Gagal");
     }
+
+    public function changePassword(Request $request, $id){
+        $user = User::where('id', $id)->first();
+        if($user){
+            $user->update($request->all());
+            return $this->success($user);
+        }
+
+        return $this->error("Perubahan Gagal");
+    }
+
     
     public function success($data) {
         return response()->json([
