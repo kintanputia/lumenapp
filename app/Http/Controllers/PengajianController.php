@@ -36,4 +36,5 @@ class PengajianController extends Controller
             'id_pengajian'=>$id_pengajian,
             'id_user'=>$id_user
         ]);
+    }
 }
