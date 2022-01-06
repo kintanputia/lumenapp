@@ -39,6 +39,6 @@ class PengajianController extends Controller
         $respon = DB::table('pengajian_favorit')
                     ->where('id_user', $id_users)
                     ->get();
-                return response($i);
+                return response($respon);
     }
 }
