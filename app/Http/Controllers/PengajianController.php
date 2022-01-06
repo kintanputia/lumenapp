@@ -26,7 +26,7 @@ class PengajianController extends Controller
     }
     public function add_pf(Request $request)
     {
-        $i = DB::table('pengajian_favorit')->max('id_pf');
+        $i = DB::table('pengajian')->orderBy('id_pf', 'desc')->first();
         $id_pengajian = $request->id_pengajian;
         $id_user = $request->id_user;
 
