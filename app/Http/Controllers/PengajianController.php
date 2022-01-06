@@ -28,17 +28,17 @@ class PengajianController extends Controller
     {
         $i = DB::table('pengajian')->orderBy('id_pf', 'desc')->first();
         $id_pengajian = $request->id_pengajian;
-        $id_user = $request->id_user;
+        $id_users = $request->id_user;
 
         $pf = DB::table('pengajian_favorit')->insert([
             'id_pf'=>$i+1,
             'id_pengajian'=>$id_pengajian,
-            'id_user'=>$id_user
+            'id_user'=>$id_users
         ]);
 
-        $rpf = DB::table('pengajian_favorit')
-                    ->where('id_user', $id_user)
+        $respon = DB::table('pengajian_favorit')
+                    ->where('id_user', $id_users)
                     ->get();
-                return response($rpf);
+                return response($respon);
     }
 }
