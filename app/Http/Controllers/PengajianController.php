@@ -41,4 +41,13 @@ class PengajianController extends Controller
                     ->get();
                 return response($respon);
     }
+    public function pf(Request $request)
+    {
+        $id_user = $request->id_user;
+        $pengajian = DB::table('pengajian_favorit')
+                    ->join('pengajian', 'pengajian_favorit.id_pengajian', '=', 'pengajian.id_pengajian')
+                    ->where('id_user', $id_user)
+                    ->get();
+                return response($pengajian);
+    }
 }
