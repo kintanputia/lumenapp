@@ -59,7 +59,7 @@ class PengajianController extends Controller
                     ->where('id_user', $id_user)
                     ->first();
                     return response()->json([
-                        'data' => $pt
+                        $pt
                     ]);
     }
 }
