@@ -60,7 +60,6 @@ class PengajianController extends Controller
                     ->first();
                     return response()->json([
                         'success' => 1,
-                        'message' => 'Selamat datang '.$user->name,
                         'user' => $pt
                     ]);
     }
