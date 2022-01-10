@@ -53,11 +53,11 @@ class PengajianController extends Controller
     public function pt(Request $request)
     {
         $id_user = $request->id_user;
-        $pengajian = DB::table('pengajian_favorit')
+        $pt = DB::table('pengajian_favorit')
                     ->join('pengajian', 'pengajian_favorit.id_pengajian', '=', 'pengajian.id_pengajian')
                     ->orderBy('pengajian.tgl_pengajian', 'desc')
                     ->where('id_user', $id_user)
-                    ->first();
-                return response($pengajian);
+                    ->get();
+                return response($pt);
     }
 }
