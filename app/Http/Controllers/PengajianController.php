@@ -58,6 +58,8 @@ class PengajianController extends Controller
                     ->orderBy('pengajian.tgl_pengajian', 'desc')
                     ->where('id_user', $id_user)
                     ->first();
-                    return response()->json(['data' => $pt]);
+                    return response()->json([
+                        'data' => $pt
+                    ]);
     }
 }
