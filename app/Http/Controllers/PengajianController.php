@@ -59,7 +59,9 @@ class PengajianController extends Controller
                     ->where('id_user', $id_user)
                     ->first();
                     return response()->json([
-                        $pt
+                        'success' => 1,
+                        'message' => 'Selamat datang '.$user->name,
+                        'user' => $pt
                     ]);
     }
 }
