@@ -57,7 +57,7 @@ class PengajianController extends Controller
                     ->join('pengajian', 'pengajian_favorit.id_pengajian', '=', 'pengajian.id_pengajian')
                     ->orderBy('pengajian.tgl_pengajian', 'desc')
                     ->where('id_user', $id_user)
-                    ->get(0);
+                    ->first().toArray();
                 return response($pt);
     }
 }
