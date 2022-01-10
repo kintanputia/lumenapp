@@ -21,6 +21,7 @@ $router->post('cari_pengajian', 'PengajianController@index');
 $router->post('daftar_pengajian', 'PengajianController@detail');
 $router->post('add_pf', 'PengajianController@add_pf');
 $router->post('pengajian_favorit', 'PengajianController@pf');
+$router->post('pengajian_terdekat', 'PengajianController@pt');
 
 $router->get('/pengajian', function () use ($router) {
     $results = app('db')->select("SELECT * FROM pengajian INNER JOIN masjid ON pengajian.id_masjid=masjid.id_masjid");
